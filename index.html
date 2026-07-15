@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ArbiVES</title>
-
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArbiVES</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -16,28 +15,61 @@
 <h1>ArbiVES</h1>
 
 <div class="card">
-    <h3>BCV</h3>
-    <p id="bcv">Cargando...</p>
+<h3>BCV</h3>
+<input id="bcv" type="number" step="0.01" value="723.99">
 </div>
 
 <div class="card">
-    <h3>USDT Binance</h3>
-    <p id="usdt">Cargando...</p>
+<h3>USDT Binance</h3>
+<input id="usdt" type="number" step="0.01" value="860">
 </div>
 
 <div class="card">
-    <h3>Costo Real</h3>
-    <p id="costo">0.00 Bs</p>
+<h3>Banco %</h3>
+<input id="banco" type="number" step="0.1" value="0.5">
 </div>
 
 <div class="card">
-    <h3>Rentabilidad</h3>
-    <p id="ganancia">0.00 %</p>
+<h3>Binance %</h3>
+<input id="binance" type="number" step="0.1" value="4.3">
 </div>
 
-<button onclick="actualizar()">
-Actualizar
-</button>
+<div class="card">
+<h3>Mastercard %</h3>
+<input id="master" type="number" step="0.1" value="1.5">
+</div>
+
+<div class="card">
+<h3>Monto USD</h3>
+<input id="monto" type="number" value="1000">
+</div>
+
+<button onclick="calcular()">CALCULAR</button>
+
+<div class="card">
+<h3>Costo Real</h3>
+<p id="costo">0.00</p>
+</div>
+
+<div class="card">
+<h3>Inversión</h3>
+<p id="inversion">0.00</p>
+</div>
+
+<div class="card">
+<h3>Venta</h3>
+<p id="venta">0.00</p>
+</div>
+
+<div class="card">
+<h3>Ganancia</h3>
+<p id="ganancia">0.00</p>
+</div>
+
+<div class="card">
+<h3>Rentabilidad</h3>
+<p id="rentabilidad">0%</p>
+</div>
 
 </div>
 
