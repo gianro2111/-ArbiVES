@@ -1,16 +1,31 @@
-document.getElementById("bcv").innerText = "724.00 Bs";
-document.getElementById("usdt").innerText = "860.00 Bs";
+async function cargarBCV() {
+  try {
+    // Temporal mientras conectamos la API definitiva
+    const tasaBCV = 724.00;
 
-const bcv = 724.00;
-const comBanco = 0.005;
-const comBinance = 0.043;
-const comInternacional = 0.015;
-const usdt = 860.00;
+    document.getElementById("bcv").innerText = tasaBCV.toFixed(2) + " Bs";
 
-const costo = bcv * (1 + comBanco) * (1 + comBinance) * (1 + comInternacional);
+    calcular(tasaBCV, 860.00);
 
-document.getElementById("costo").innerText = costo.toFixed(2) + " Bs";
+  } catch (e) {
+    document.getElementById("bcv").innerText = "Error";
+  }
+}
 
-const rentabilidad = ((usdt - costo) / costo) * 100;
+function calcular(bcv, usdt){
 
-document.getElementById("ganancia").innerText = rentabilidad.toFixed(2) + "%";
+    const comBanco=0.005;
+    const comBinance=0.043;
+    const comInternacional=0.015;
+
+    const costo=bcv*(1+comBanco)*(1+comBinance)*(1+comInternacional);
+
+    document.getElementById("usdt").innerText=usdt.toFixed(2)+" Bs";
+    document.getElementById("costo").innerText=costo.toFixed(2)+" Bs";
+
+    const rentabilidad=((usdt-costo)/costo)*100;
+
+    document.getElementById("ganancia").innerText=rentabilidad.toFixed(2)+" %";
+}
+
+cargarBCV();
