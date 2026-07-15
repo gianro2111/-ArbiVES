@@ -1,79 +1,21 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArbiVES</title>
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div class="container">
-
-<h1>ArbiVES</h1>
-
 <div class="card">
-<h3>BCV</h3>
-<input id="bcv" type="number" step="0.01" value="723.99">
+    <h2>BCV</h2>
+    <input type="number" id="bcv" placeholder="Ingrese BCV">
 </div>
 
 <div class="card">
-<h3>USDT Binance</h3>
-<input id="usdt" type="number" step="0.01" value="860">
+    <h2>USDT Binance</h2>
+    <input type="number" id="usdt" placeholder="Ingrese USDT">
 </div>
 
 <div class="card">
-<h3>Banco %</h3>
-<input id="banco" type="number" step="0.1" value="0.5">
+    <h2>Costo Real</h2>
+    <h3 id="costo">0.00 Bs</h3>
 </div>
 
 <div class="card">
-<h3>Binance %</h3>
-<input id="binance" type="number" step="0.1" value="4.3">
+    <h2>Rentabilidad</h2>
+    <h3 id="ganancia">0%</h3>
 </div>
 
-<div class="card">
-<h3>Mastercard %</h3>
-<input id="master" type="number" step="0.1" value="1.5">
-</div>
-
-<div class="card">
-<h3>Monto USD</h3>
-<input id="monto" type="number" value="1000">
-</div>
-
-<button onclick="calcular()">CALCULAR</button>
-
-<div class="card">
-<h3>Costo Real</h3>
-<p id="costo">0.00</p>
-</div>
-
-<div class="card">
-<h3>Inversión</h3>
-<p id="inversion">0.00</p>
-</div>
-
-<div class="card">
-<h3>Venta</h3>
-<p id="venta">0.00</p>
-</div>
-
-<div class="card">
-<h3>Ganancia</h3>
-<p id="ganancia">0.00</p>
-</div>
-
-<div class="card">
-<h3>Rentabilidad</h3>
-<p id="rentabilidad">0%</p>
-</div>
-
-</div>
-
-<script src="app.js"></script>
-
-</body>
-</html>
+<button onclick="calcular()">Calcular</button>
