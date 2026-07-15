@@ -4,15 +4,13 @@ async function actualizar() {
 
     try {
 
-        const respuesta = await fetch(
-            "https://api.cotizave.com/v1/fx/rates/reference",
-            {
-                headers:{
-                    "X-API-Key":API_KEY,
-                    "Accept":"application/json"
-                }
-            }
-        );
+        const respuesta = await fetch("https://api.cotizave.com/v1/fx/rates/reference", {
+  method: "GET",
+  headers: {
+    "X-API-Key": API_KEY,
+    "Accept": "application/json"
+  }
+});
 
         const data = await respuesta.json();
 
