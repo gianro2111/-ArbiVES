@@ -1,41 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArbiVES</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<title>BCV • Cashea</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--bg:#f5f7fb;--ink:#0b1220;--muted:#667085;--line:#e6e9ef;--card:#fff;--accent:#0b1220;--soft:#eef2f7}
+*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif}
+.app{max-width:520px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(30px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border-radius:14px;background:#0b1220;color:white;display:grid;place-items:center;font-weight:800;font-size:15px;letter-spacing:-.5px}
+h1{font-size:21px;line-height:1.1;margin:0}.tag{font-size:12px;color:var(--muted);margin-top:4px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 8px 28px rgba(16,24,40,.05)}
+.section-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#475467;margin-bottom:3px}
+.section-sub{font-size:12px;color:var(--muted);margin-bottom:15px}
+label{display:block;font-size:13px;font-weight:700;color:#344054;margin:14px 0 7px}
+input{width:100%;height:51px;border:1px solid #d8dde7;background:#fbfcfe;border-radius:14px;padding:0 14px;font-size:18px;color:var(--ink);outline:none;transition:.15s}
+input:focus{border-color:#0b1220;box-shadow:0 0 0 3px #0b122014;background:white}
+.results{padding:6px 18px 4px}.result{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.result:last-child{border-bottom:0}.name{font-size:14px;color:#667085;line-height:1.25}.value{font-size:19px;font-weight:800;white-space:nowrap}
+.highlight{background:#0b1220;color:white;border-radius:17px;padding:15px 16px;margin:8px 0}.highlight .name{color:#cbd5e1}.highlight .value{font-size:21px}
+.actions{display:flex;gap:10px;margin-top:15px}button{flex:1;height:48px;border:0;border-radius:14px;font-size:15px;font-weight:750;cursor:pointer}
+.primary{background:#0b1220;color:white}.secondary{background:var(--soft);color:#344054}
+.footer{text-align:center;color:#98a2b3;font-size:11px;margin-top:17px}
+@media(max-width:360px){.app{padding-left:12px;padding-right:12px}.value{font-size:17px}}
+</style>
 </head>
-
 <body>
+<main class="app">
+  <header class="top">
+    <div class="brand"><div class="logo">BCV</div><div><h1>Calculadora BCV</h1><div class="tag">Conversión rápida • Cashea</div></div></div>
+  </header>
 
-<h1>ArbiVES</h1>
+  <section class="card">
+    <div class="section-title">Datos de entrada</div>
+    <div class="section-sub">Introduce los valores que quieres comparar.</div>
+    <label for="usd">Precio en dólares ($)</label>
+    <input id="usd" type="number" inputmode="decimal" step="any" placeholder="0,00">
+    <label for="bcv">Tasa BCV</label>
+    <input id="bcv" type="number" inputmode="decimal" step="any" placeholder="0,00">
+    <label for="bsRate">Tasa en bolívares</label>
+    <input id="bsRate" type="number" inputmode="decimal" step="any" placeholder="0,00">
+    <label for="casheaRate">Tasa Cashea</label>
+    <input id="casheaRate" type="number" inputmode="decimal" step="any" placeholder="0,00">
+    <div class="actions"><button class="secondary" id="clear">Limpiar</button><button class="primary" id="focusFirst">Nuevo cálculo</button></div>
+  </section>
 
-<div class="card">
-<h2>BCV</h2>
-<input type="number" id="bcv" placeholder="Ingrese BCV">
-</div>
-
-<div class="card">
-<h2>USDT Binance</h2>
-<input type="number" id="usdt" placeholder="Ingrese USDT">
-</div>
-
-<div class="card">
-<h2>Costo Real</h2>
-<h3 id="costo">0.00 Bs</h3>
-</div>
-
-<div class="card">
-<h2>Rentabilidad</h2>
-<h3 id="ganancia">0%</h3>
-</div>
-
-<button onclick="calcular()">Calcular</button>
-
-<script src="app.js"></script>
-
-</body>
-
-</html>
+  <section class="card results">
+    <div class="section-title" style="margin-top:7px">Resultados</div>
+    <div class="result"><span class="name">Precio en bolívares</span><span class="value" id="bs">—</span></div>
+    <div class="result"><span class="name">Precio en dólares<br>según BCV</span><span class="value" id="usdBcv">—</span></div>
+    <div class="highlight result"><span class="name">Precio Cashea<br>en bolívares</span><span class="value" id="casheaBs">—</span></div>
+    <div class="result"><span class="name">Precio Cashea en dólares<br>según BCV</span><span class="value" id="casheaUsd">—</span></div>
+  </section>
+  <div class="footer">Las tasas se introducen manualmente • Cálculo instantáneo</div>
+</main>
+<script>
+const ids=["usd","bcv","bsRate","casheaRate"], $=id=>document.getElementById(id);
+function num(id){return parseFloat($(id).value)}
+function fmt(n,s){return Number.isFinite(n)?n.toLocaleString("es-VE",{minimumFractionDigits:2,maximumFractionDigits:2})+s:"—"}
+function calc(){
+ const usd=num("usd"),bcv=num("bcv"),r=num("bsRate"),c=num("casheaRate");
+ const bs=usd*r,ub=bs/bcv,cb=usd*c,cu=cb/bcv;
+ $("bs").textContent=fmt(bs," Bs");$("usdBcv").textContent=fmt(ub," $");
+ $("casheaBs").textContent=fmt(cb," Bs");$("casheaUsd").textContent=fmt(cu," $");
+}
+ids.forEach(id=>$(id).addEventListener("input",calc));
+$("clear").onclick=()=>{ids.forEach(id=>$(id).value="");calc();$("usd").focus()}
+$("focusFirst").onclick=()=>{$("usd").focus()}
+</script>
+</body></html>
